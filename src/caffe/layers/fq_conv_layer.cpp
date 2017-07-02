@@ -17,8 +17,8 @@ void FQConvolutionLayer<Dtype>::LayerSetUp(const vector<Blob<Dtype>*>& bottom,
   weight_shape[0] = 4;
   this->blobs_[blob_size].reset(new Blob<Dtype>(weight_shape));
 
-  Dtype* quant_data = this->blobs_[blob_size]->mutable_gpu_data();
-  quant_data[0] = static_cast<Dtype>(8); // default level
+  Dtype* quant_data = this->blobs_[blob_size]->mutable_cpu_data();
+  quant_data[0] = static_cast<Dtype>(256); // default level
   quant_data[1] = 0;  // diff
   quant_data[2] = 0;  // min_level
   quant_data[3] = 0;  // max_level
